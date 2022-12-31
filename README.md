@@ -306,7 +306,7 @@ The following are optional commands that can be run at any time if needed:
   mamba list --name base
 
   # Change the current working directory to the project directory
-  cd "${HOME}/Documents/GitHub/neuralworks"
+  cd "${HOME}/Documents/GitHub/neuralworks-challenge"
 
   # remove the old environment (if it exists)
   # conda env remove --name neuralworks
@@ -352,7 +352,7 @@ The following are optional commands that can be run at any time if needed:
   mamba init --all
 
   # Change the current working directory to the project directory
-  cd "${HOME}/Documents/GitHub/neuralworks"
+  cd "${HOME}/Documents/GitHub/neuralworks-challenge"
 
   # activate the new environment
   mamba activate neuralworks
@@ -380,8 +380,8 @@ The following are optional commands that can be run at any time if needed:
   # python -m pip
 
   # install the package
-  # pip install --editable "${HOME}/Documents/GitHub/neuralworks"
-  python -m pip install --editable "${HOME}/Documents/GitHub/neuralworks"
+  # pip install --editable "${HOME}/Documents/GitHub/neuralworks-challenge"
+  python -m pip install --editable "${HOME}/Documents/GitHub/neuralworks-challenge"
 
   # enable ipywidgets in the new environment (optional)
   # when using virtual environments, the recommended way to enable ipywidgets
@@ -406,7 +406,7 @@ The following are optional commands that can be run at any time if needed:
 
   ```bash
   # Change the current working directory to the project directory
-  cd "${HOME}/Documents/GitHub/neuralworks"
+  cd "${HOME}/Documents/GitHub/neuralworks-challenge"
 
   # activate the conda environment
   conda activate neuralworks
@@ -430,13 +430,13 @@ The following are optional commands that can be run at any time if needed:
 
 ```bash
 # Change the current working directory to the project directory
-cd "${HOME}/Documents/GitHub/neuralworks"
+cd "${HOME}/Documents/GitHub/neuralworks-challenge"
 
 # activate the conda environment
 conda activate neuralworks
 
 # install the package
-python -m pip install --editable "${HOME}/Documents/GitHub/neuralworks"
+python -m pip install --editable "${HOME}/Documents/GitHub/neuralworks-challenge"
 ```
 
 ## Some libraries used
