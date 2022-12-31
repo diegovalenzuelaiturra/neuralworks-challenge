@@ -84,7 +84,7 @@ repos:
         name: "[check]: added large files"
         args:
           # default: 500
-          - --maxkb=1000
+          - --maxkb=2000
           # - --enforce-all
         exclude: '.*\.(csv|txt)'
 
