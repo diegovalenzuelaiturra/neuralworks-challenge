@@ -12,9 +12,9 @@ logs.log
 # when saving a file (e.g. when using PyCaret to save a model)
 *.pkl
 
-# pandas-profiling reports
-reports/light_profile_report.html
-reports/deep_profile_report.html
+# # pandas-profiling reports
+# reports/light_profile_report.html
+# reports/deep_profile_report.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
