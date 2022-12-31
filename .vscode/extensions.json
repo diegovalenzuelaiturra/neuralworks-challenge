@@ -1,0 +1,56 @@
+{
+    "recommendations": [
+        // CONFIGURATIONS
+        "EditorConfig.EditorConfig",
+        // PYTHON
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        // JUPYTER
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap", // TODO: check if this is problematic
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-toolsai.vscode-jupyter-slideshow",
+        // GITHUB
+        "GitHub.codespaces",
+        "GitHub.copilot",
+        "GitHub.copilot-labs",
+        "GitHub.remotehub",
+        "GitHub.vscode-pull-request-github",
+        // GITHUB INTEGRATION
+        "eamodio.gitlens",
+        // OUTPUT COLORIZER
+        "IBM.output-colorizer",
+        // PYTHON DOCSTRINGS
+        "njpwerner.autodocstring",
+        // TO-DO LIST
+        "Gruntfuggly.todo-tree",
+        //
+        // "redhat.fabric8-analytics",
+        "redhat.vscode-commons",
+        "redhat.vscode-yaml",
+        //
+        // PYTHON CODE QUALITY
+        "sourcery.sourcery",
+        //
+        // MARKDOWN
+        // "davidanson.vscode-markdownlint",
+        //
+        // SHELL (brew install shellcheck)
+        // "timonwong.shellcheck",
+        // "foxundermoon.shell-format",
+        // "rogalmic.bash-debug",
+        //
+        // COMMITS
+        // "joshbolduc.commitlint",
+        // "vivaxy.vscode-conventional-commits",
+        //
+        // MONITOR
+        "mutantdino.resourcemonitor",
+        //
+        // SPELL CHECK
+        // "streetsidesoftware.code-spell-checker",
+        // "streetsidesoftware.code-spell-checker-spanish",
+    ],
+    "unwantedRecommendations": [],
+}

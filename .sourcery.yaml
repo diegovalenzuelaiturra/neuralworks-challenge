@@ -1,0 +1,27 @@
+---
+# https://docs.sourcery.ai/Configuration/
+ignore:
+  # Note that any strings beginning with * must be quoted
+  - "**/node_modules"
+  - "*/__pycache__/*"
+  - "typestubs"
+  - "typings"
+  - "*/.eggs/*"
+  - "*/.ipynb_checkpoints/*"
+  - "*/.mypy_cache/*"
+  - "*/.pytest_cache/*"
+  - "*/*.egg-info/*"
+  - "*/*.egg"
+  - "*/data/*"
+  - "*/dist-packages/*"
+
+refactor:
+  skip: []
+
+metrics:
+  quality_threshold: 25.0
+
+clone_detection:
+  min_lines: 3
+  min_duplicates: 2
+  identical_clones_only: false

@@ -1,0 +1,64 @@
+# .coveragerc to control coverage.py
+#   Reference: https://coverage.readthedocs.io/en/latest/config.html
+
+#   Reference: https://coverage.readthedocs.io/en/latest/config.html#run
+[run]
+# Setting 'branch = True' would need to use 'pragma: no branch' on infinite loops.
+branch = True
+parallel = True
+# concurrency = multiprocessing
+
+#   Reference: https://coverage.readthedocs.io/en/latest/cmd.html#cmd-warnings
+disable_warnings = no-data-collected
+
+omit =
+    */__init__.py
+    */.tox/*
+    */*cache*/*
+    */setup.py
+    */stubs/*
+    */tests/*
+    */typesheds/*
+    */typestubs/*
+    */typings/*
+    */venv*/*
+
+#   Reference: https://coverage.readthedocs.io/en/latest/config.html#report
+[report]
+ignore_errors = True
+show_missing = True
+skip_covered = True
+skip_empty = True
+# sort = -cover
+sort = cover
+# fail_under = 90
+
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Have to re-enable the standard pragma
+    pragma: no cover
+
+    # Don't complain about missing debug-only code:
+    def __repr__
+    if self\.debug
+    if settings.DEBUG
+
+    # Don't complain if tests don't hit defensive assertion code:
+    raise AssertionError
+    raise NotImplementedError
+    raise TypeError
+    assert False
+
+    # Don't complain if non-runnable code isn't run:
+    if 0:
+    if __name__ == .__main__.:
+    class .*\bProtocol\):
+
+    # Don't complain about abstract methods, they aren't run:
+    @(abc\.)?abstractmethod
+
+
+[html]
+directory = coverage_html_report
+
+title = Coverage Report

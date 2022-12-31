@@ -1,0 +1,49 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# NOTE: the order of definitions here is important
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 119
+skip = build,.tox,venv
+
+[*.json]
+indent_style = space
+indent_size = 4
+
+[{*.yml,*.yaml}]
+indent_style = space
+indent_size = 2
+
+[*.cfg]
+indent_style = space
+indent_size = 4
+
+[*.md]
+indent_style = space
+indent_size = 2
+max_line_length = 0
+# https://github.com/microsoft/vscode/issues/1679
+trim_trailing_whitespace = false
+
+[cSpell.json]
+indent_size = 4
+insert_final_newline = false
+
+[{*.bat,LICENSE.txt}]
+end_of_line = crlf
+
+[COMMIT_EDITMSG]
+max_line_length = 0

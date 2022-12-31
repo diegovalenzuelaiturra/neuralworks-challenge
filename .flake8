@@ -1,0 +1,292 @@
+[flake8]
+#   https://flake8.pycqa.org/en/latest/
+#   https://flake8.pycqa.org/en/latest/user/options.html
+
+# pip install --upgrade --no-cache-dir pylint mccabe radon flake8-polyfill flake8-bugbear flake8
+
+# Format errors according to the chosen formatter.
+format = pylint
+
+# Maximum allowed line length for the entirety of this run. (Default: 79)
+max-line-length = 119
+
+# Maximum allowed doc line length for the entirety of this run. (Default: None)
+max-doc-length = 119
+
+# Number of subprocesses to use to run checks in parallel. This is ignored on Windows.
+# The default, "auto", will auto-detect the number of processors available to use.
+# (Default: auto)
+jobs = auto
+# jobs = 8
+
+# Comma-separated list of files or directories to exclude.
+# (Default: ['.svn', 'CVS', '.bzr', '.hg', '.git', '__pycache__', '.tox', '.eggs', '*.egg'])
+exclude =
+    .svn,
+    CVS,
+    .bzr,
+    .hg,
+    .git,
+    __pycache__,
+    .tox,
+    .eggs,
+    *.egg,
+    # custom
+    .venv,
+    .idea,
+    .cache,
+    .mypy_cache,
+    .pytest_cache,
+    *.csv,
+    *.pyc,
+    *.pyi,
+    *.txt,
+    stubs,
+    typesheds,
+    typestubs,
+    typings
+
+# Disable the effect of "# noqa". This will report errors on lines with "# noqa" at the end.
+# disable-noqa = True
+
+# Count errors and warnings.
+statistics = True
+
+# Show the source generate each error or warning.
+# show-source = True
+
+#   FLAKE8 EXTENSIONS
+#
+#       flake8-bugbear [B101, B950]
+#       https://github.com/PyCQA/flake8-bugbear
+#
+#       flake8-copyright [C801]
+#       https://github.com/savoirfairelinux/flake8-copyright
+#
+#       flake8-commas [C812, C819]
+#       https://github.com/PyCQA/flake8-commas/
+#
+#       flake8-comprehensions [C400, C416]
+#       https://github.com/adamchainz/flake8-comprehensions
+#
+#       flake8-bandit [S101, S704] - Replaced B prefix with S, for safety reasons
+#       https://github.com/tylerwince/flake8-bandit
+#           https://pypi.org/project/bandit/
+#
+#       flake8-docstrings [D100, D418]
+#       https://github.com/PyCQA/flake8-docstrings
+#           http://www.pydocstyle.org/en/stable/error_codes.html
+#
+#       flake8-eradicate [E800]
+#       https://github.com/wemake-services/flake8-eradicate
+#
+#       flake8-print [T001, T004]
+#       https://github.com/jbkahn/flake8-print
+#
+#       flake8-pytest-style [PT001, PT026]
+#       https://github.com/m-burst/flake8-pytest-style
+#
+#       flake8-logging-format [G001, G202]
+#       https://github.com/globality-corp/flake8-logging-format
+#
+#       pep8-naming [N801, N818] (naming)
+#       https://github.com/PyCQA/pep8-naming
+#
+#       pycodestyle [E101, E902] [W191, W606]
+#       https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
+#
+#       pydocstyle [D100 D418]
+#       http://www.pydocstyle.org/en/stable/error_codes.html
+#
+#       pyflakes [F401, F841]
+#       https://github.com/PyCQA/pyflakes
+#
+#       radon [R101, R502]
+#       https://github.com/rubik/radon
+#
+#       flake8-executable [EXE001, EXE005]
+#       https://github.com/xuhdev/flake8-executable
+#
+#       flake8_implicit_str_concat [ISC001, ISC003]
+#       https://github.com/keisheiled/flake8-implicit-str-concat
+#
+#       tryceratops [TC002, TC401]
+#       https://github.com/guilatrova/tryceratops
+#
+#       flake8-use-pathlib [PL100, PL124]
+#       https://gitlab.com/RoPP/flake8-use-pathlib
+#
+#       flake8-broken-line [N400]
+#       https://github.com/wemake-services/flake8-broken-line
+#
+#       flake8-debugger [T100]
+#       https://github.com/jbkahn/flake8-debugger
+#
+#       flake8-simplify [SIM101, SIM300]
+#       https://github.com/MartinThoma/flake8-simplify
+#           To enable it, run
+#               run 'pip install --upgrade flake8-simplify'
+#               add 'flake8-simplify' to 'enable-extensions'
+#               add 'SIM' error code prefix to 'select'
+#
+#       flake8-type-checking [TC001, TC201]
+#       https://github.com/snok/flake8-type-checking
+#
+#       flake8-typing-imports [TYP001, TYP006]
+#       https://github.com/asottile/flake8-typing-imports
+#
+#       flake8-no-pep420 [INP001]
+#       https://github.com/adamchainz/flake8-no-pep420
+#
+#       flake8-simplify [SIM101, SIM401]
+#       https://github.com/MartinThoma/flake8-simplify
+#
+#       flake8-quotes [Q000, Q003]
+#       https://github.com/zheller/flake8-quotes
+#
+#     cohesion [H601]
+#     https://github.com/mschwager/cohesion
+#
+# TODO: Check AAA
+#       https://github.com/jamescooke/flake8-aaa
+
+# Enable plugins and extensions that are otherwise disabled by default
+#   G       = flake8-logging-format
+#   naming  = pep8-naming
+enable-extensions =
+    flake8_implicit_str_concat,
+    flake8-bandit,
+    flake8-broken-line,
+    flake8-bugbear,
+    flake8-commas,
+    flake8-comprehensions,
+    flake8-copyright,
+    flake8-debugger,
+    flake8-docstrings,
+    flake8-eradicate,
+    flake8-executable,
+    flake8-print,
+    flake8-pytest-style,
+    flake8-use-pathlib,
+    G,
+    naming,
+    pycodestyle,
+    pydocstyle,
+    pyflakes,
+    radon
+
+# # mccabe
+# McCabe complexity threshold
+max-complexity = 18
+
+# # pyflakes
+# also check syntax of the doctests
+# doctests = True
+
+# # radon
+#   https://radon.readthedocs.io/en/latest/flake8.html
+radon-max-cc = 10
+
+# flake8-docstrings
+docstring-convention = google
+
+ignore =
+    # One-line docstring should fit on one line with quotes
+    # D200,
+    # Multi-line docstring summary should start at the first line
+    # D212,
+    # 1 blank line required between summary line and description
+    # D205,
+    # First line should end with a period, question mark, or exclamation point
+    # D415,
+    # No blank lines allowed after function docstring
+    # D202,
+    # Unnecessary list comprehension - rewrite using list()
+    C416,
+    # Line too long
+    #   NOTE: E501 is not flexible enough, we're using B950 instead, because it considers "max-line-length" but only
+    #         triggers when the value has been exceeded by more than 10%.
+    #           Reference: https://github.com/PyCQA/flake8-bugbear#how-to-enable-opinionated-warnings
+    E501,
+    # argument name 'X' should be lowercase
+    N803,
+    # variable 'X' in class scope should not be mixedCase
+    N815
+
+per-file-ignores =
+    # Ignore the following errors in the tests
+    #   D101    : Missing docstring in public class
+    #   D102    : Missing docstring in public method
+    #   D103    : Missing docstring in public function
+    #   D104    : Missing docstring in public package
+    #   H601    : class has low (X.YZ%) cohesion
+    #   INP001  : File is part of an implicit namespace package.
+    #   N815    : variable 'X' in class scope should not be mixedCase
+    #   PT001   : use @pytest.fixture() over @pytest.fixture
+    #   S101    : Use of assert detected. The enclosed code will be removed when compiling to optimised byte code
+    */test_*: D101,D102,D103,H601,PT001,S101
+    conftest.py: S101,INP001
+    setup.py: INP001
+    */__init__.py: D104
+    */types.py: H601,N815
+
+# flake8-copyright
+#   Reference: https://github.com/savoirfairelinux/flake8-copyright
+# flake8-copyright does not support unicode. You should list the files that contain unicode in the `exclude` list.
+#   Reference: https://github.com/savoirfairelinux/flake8-copyright/issues/15
+copyright-check = True
+copyright-regexp = Copyright \(c\) Diego Francisco Valenzuela Iturra. All Rights Reserved
+# C errors are not selected by default, so add them to your selection
+
+# Default select = E,F,W,C90
+select =
+    E,
+    F,
+    W,
+    # mccabe
+    C90,
+    # Custom
+    B,
+    B9,
+    C,
+    D,
+    EXE,
+    G,
+    ISC,
+    N,
+    PL
+    PT,
+    R,
+    S,
+    T,
+    # tryceratops & flake8-type-checking
+    TC,
+    # flake8-type-checking
+    TC1,
+    TYP,
+    INP,
+    SIM,
+    Q0,
+    H
+
+# https://github.com/snok/flake8-type-checking
+# type-checking-exempt-modules = typing, typing_extensions, mypy_extensions
+
+# https://github.com/asottile/flake8-typing-imports
+min_python_version = 3.8.0
+
+# https://github.com/m-burst/flake8-pytest-style#configuration
+pytest-fixture-no-parentheses = True
+pytest-parametrize-names-type = tuple
+pytest-parametrize-values-type = list
+pytest-parametrize-values-row-type = tuple
+pytest-raises-require-match-for = True
+pytest-mark-no-parentheses = True
+
+# Potentially useful tools
+#   https://github.com/adamchainz/flake8-tidy-imports\
+#   https://github.com/seddonym/import-linter/
+
+
+# flake8-noqa
+noqa-require-code = True

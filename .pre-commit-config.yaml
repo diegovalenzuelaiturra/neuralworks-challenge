@@ -1,0 +1,588 @@
+---
+# Install pre-commit
+#   pip install --upgrade --no-cache-dir pre-commit
+
+# Auto-update the version of the hooks
+#   pre-commit autoupdate
+
+# Install the pre-commit hooks
+#   pre-commit install
+
+# Also install environments for all available hooks now (rather than when they are first executed)
+#   pre-commit install-hooks
+
+# Run the hooks on all files with
+#   pre-commit run --all-files
+
+# Idempotently replaces existing git hook scripts with pre-commit, and also installs hook environments.
+#   pre-commit install --install-hooks --overwrite
+
+# Run individual hooks with
+#   pre-commit run <hook_id>
+
+# Store "frozen" hashes in rev instead of tag names, with
+#   pre-commit --freeze
+#   # pre-commit autoupdate --freeze
+
+# Hard cleanup
+#   pre-commit uninstall
+#   pre-commit clean
+#   pre-commit gc
+#   pre-commit autoupdate
+#   pre-commit install
+#   pre-commit install-hooks
+#   pre-commit run --all-files
+#   pre-commit gc
+
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+# References:
+#   https://pre-commit.com/#usage-in-continuous-integration
+#
+#   https://github.com/google/yapf
+#   https://github.com/NVIDIA/NVTabular/blob/main/.pre-commit-config.yaml
+#   https://github.com/google/jax/blob/main/.pre-commit-config.yaml
+#   https://github.com/facebookresearch/mtrl/blob/main/.pre-commit-config.yaml
+#   https://github.com/PyCQA/pylint/blob/main/.pre-commit-config.yaml
+#   https://github.com/nbQA-dev/nbQA/blob/master/.pre-commit-config.yaml
+#   https://github.com/google/pre-commit-tool-hooks/blob/trunk/.pre-commit-config.yaml
+
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+minimum_pre_commit_version: "2.21.0"
+
+default_language_version:
+  # force all unspecified python hooks to run python3
+  python: python3
+  # python: python3.9
+
+# whether to fail on first error or continue
+fail_fast: false
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-ast
+        name: "[check]: files parse as valid python"
+
+      - id: check-builtin-literals
+        name: "[check]: builtin type constructor use (Python)"
+
+      - id: trailing-whitespace
+        name: "  [fix]: trim trailing whitespace"
+        args:
+          # preserve Markdown hard line breaks
+          - --markdown-linebreak-ext=md
+
+      - id: check-docstring-first
+        name: "[check]: docstring must be first in a module (Python)"
+
+      - id: check-added-large-files
+        name: "[check]: added large files"
+        args:
+          # default: 500
+          - --maxkb=1000
+          # - --enforce-all
+        exclude: '.*\.(csv|txt)'
+
+      - id: check-json
+        # does not support comments (JSONC)
+        # does not support trailing commas
+        name: "[check]: files are valid JSON"
+        # NOTE: mark regex as verbose ( https://github.com/psf/black/issues/395#issuecomment-499630129 )
+        exclude: |
+          (?x)(
+              cSpell\.json|
+              .devcontainer/|
+              .vscode/
+          )
+
+      - id: check-toml
+        name: "[check]: checks TOML files for parseable syntax."
+
+      - id: check-yaml
+        name: "[check]: checks YAML files for parseable syntax"
+
+      - id: check-xml
+        name: "[check]: checks XML files for parseable syntax"
+
+      - id: debug-statements
+        name: "[check]: debug statements (Python)"
+
+      - id: check-merge-conflict
+        name: "[check]: merge conflict markers"
+        # args:
+        #   # --assume-in-merge - Allows running the hook when there is no ongoing merge operation
+        #   - --assume-in-merge
+
+      - id: double-quote-string-fixer
+        name: "  [fix]: double-quoted strings to single-quoted strings (Python)"
+        stages: [manual]
+
+      - id: end-of-file-fixer
+        name: "  [fix]: fix missing newline at end of file"
+        exclude: '.*\.(txt|csv)'
+
+      - id: fix-encoding-pragma
+        name: "  [fix]: encoding pragma (Python)"
+        args:
+          # To remove the coding pragma pass (useful in a python3-only codebase)
+          - --remove
+
+      - id: mixed-line-ending
+        name: "  [fix]: mixed line endings"
+        args:
+          - --fix=lf
+
+      - id: name-tests-test
+        name: "[check]: test files should be named test*.py"
+        args:
+          # --pytest (the default): ensure tests match .*_test\.py
+          # --pytest-test-first: ensure tests match test_.*\.py
+          # --django / --unittest: ensure tests match test.*\.py
+          - --pytest-test-first
+
+      - id: detect-private-key
+        name: "[check]: detect private key"
+
+      # - id: check-byte-order-marker
+      #   name: "[check]: forbids files which have a utf-8 byte-order marker"
+
+      - id: fix-byte-order-marker
+        name: "  [fix]: remove UTF-8 byte order marker"
+
+      # - id: no-commit-to-branch
+      #   name: "[check]: no commit to branch"
+      #   args:
+      #     - --branch=master
+      #     - --branch=main
+      #
+      - id: forbid-new-submodules
+        # This is intended as a helper to migrate away from submodules.
+        # If you want to ban them entirely use forbid-submodules
+        name: "[check]: forbid new submodules"
+
+        # forbid-submodules is not present in repository https://github.com/pre-commit/pre-commit-hooks
+      # - id: forbid-submodules
+      #   name: "[check]: forbids any submodules in the repository"
+
+      - id: check-case-conflict
+        name: "[check]: filename case conflicts"
+
+      - id: check-executables-have-shebangs
+        name: "[check]: ensures that (non-binary) executables have a shebang"
+
+      - id: check-shebang-scripts-are-executable
+        name: "[check]: ensures that (non-binary) files with a shebang are executable"
+
+      - id: check-symlinks
+        name: "[check]: checks for symlinks which do not point to anything"
+
+      - id: destroyed-symlinks
+        name: "[check]: detects symlinks which are changed to regular files"
+
+      - id: check-vcs-permalinks
+        name: "[check]: ensures that links to vcs websites are permalinks"
+
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.9.0
+    hooks:
+      - id: python-check-blanket-noqa
+        name: "[check]: blanket noqa"
+
+      - id: python-check-blanket-type-ignore
+        name: "[check]: blanket type ignore"
+
+      - id: python-check-mock-methods
+        name: "[check]: not-real mock methods"
+
+      - id: python-no-eval
+        name: "[check]: no eval()"
+
+      - id: python-no-log-warn
+        name: "[check]: no logger.warn, use logger.warning"
+
+      - id: python-use-type-annotations
+        name: "[check]: use type annotations, not comments"
+
+      - id: text-unicode-replacement-char
+        name: "[check]: no unicode replacement chars"
+
+      - id: python-check-mock-methods
+        name: "[check]: not-real mock methods"
+
+      - id: python-use-type-annotations
+        name: "[check]: use type annotations, not comments"
+
+  # - repo: https://github.com/asottile/add-trailing-comma
+  #   rev: v2.3.0
+  #   hooks:
+  #     - id: add-trailing-comma
+
+  - repo: https://github.com/myint/autoflake
+    rev: v2.0.0
+    hooks:
+      - id: autoflake
+        alias: remove-unused-imports
+        name: "  [fix]: remove unused imports (Python) [autoflake]"
+        args:
+          - --in-place
+          - --remove-all-unused-imports
+          - --ignore-init-module-imports
+        #   - --expand-star-imports
+        #   - --remove-duplicate-keys
+        #   - --remove-unused-variables
+
+  - repo: https://github.com/pre-commit/mirrors-autopep8
+    rev: v2.0.1
+    hooks:
+      - id: autopep8
+        alias: fix-pep8
+        name: "  [fix]: PEP 8 (Python) [autopep8]"
+        args:
+          # - "--select=E26,E265,E266,E731"
+          # - --jobs=0
+          - --jobs=8
+          - --aggressive
+          - --aggressive
+          - --aggressive
+          - --experimental
+          - --max-line-length=119
+          - --in-place
+
+  - repo: https://github.com/myint/docformatter
+    rev: v1.5.1
+    hooks:
+      - id: docformatter
+        alias: fix-docstrings
+        name: "  [fix]: docstring PEP 257 (Python) [docformatter]"
+        args:
+          - --wrap-summaries=119
+          - --wrap-descriptions=119
+          - --in-place
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.11.4
+    hooks:
+      - id: isort
+        alias: fix-imports-order
+        name: "  [fix]: imports order (Python) [isort]"
+        args:
+          - --jobs=8
+          - --settings-path=.isort.cfg
+          - --filter-files
+
+  - repo: https://github.com/pre-commit/mirrors-yapf
+    rev: v0.32.0
+    hooks:
+      - id: yapf
+        # args:
+        #   # run YAPF in parallel when formatting multiple
+        #   - --parallel
+        name: "  [fix]: format code (Python) [yapf]"
+        additional_dependencies:
+          - toml>=0.10.2
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.3.1
+    hooks:
+      - id: pyupgrade
+        name: "  [fix]: upgrade syntax (Python) [pyupgrade]"
+        args:
+          - --py36-plus
+          - --py37-plus
+          - --py38-plus
+          - --keep-runtime-typing
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.4
+    hooks:
+      - id: bandit
+        name: "[check]: security (Python) [bandit]"
+        args:
+          # exit with 0, even with results found
+          # - --exit-zero
+          # only show output in the case of an error
+          - --silent
+          # report only issues of a given confidence level or higher (-i for LOW, -ii for MEDIUM, -iii for HIGH)
+          # - -ii
+          # report only issues of a given severity level or higher  (-l for LOW, -ll for MEDIUM, -lll for HIGH)
+          - -ll
+          # optional config file to use for selecting plugins and overriding defaults
+          - --configfile=bandit.yml
+          # path to a .bandit file that supplies command line arguments
+          - --ini=.bandit
+
+  - repo: https://github.com/asottile/yesqa
+    rev: v1.4.0
+    hooks:
+      - id: yesqa
+        alias: remove-unncessary-noqa-comments
+        name: "[fix]: remove unnecessary noqa comments [yesqa]"
+        additional_dependencies: &flake8_deps
+          # flake8-broken-line==0.6.0 and flake8>=6.0.0 are incompatible
+          # flake8-eradicate==1.4.0 and flake8>=6.0.0 are incompatible.
+          # - flake8-broken-line>=0.6.0
+          # - flake8-eradicate>=1.4.0
+          - bandit>=1.7.4
+          - cohesion>=1.0.0
+          - flake8-bandit>=4.1.1
+          - flake8-bugbear>=22.10.27
+          - flake8-commas>=2.1.0
+          - flake8-comprehensions>=3.10.1
+          - flake8-copyright>=0.2.3
+          - flake8-debugger>=4.1.2
+          - flake8-docstrings>=1.6.0
+          - flake8-executable>=2.1.2
+          - flake8-implicit-str-concat>=0.3.0
+          - flake8-logging-format>=0.9.0
+          - flake8-no-pep420>=2.3.0
+          - flake8-polyfill>=1.0.2
+          - flake8-print>=5.0.0
+          - flake8-pytest-style>=1.6.0
+          - flake8-quotes>=3.3.1
+          - flake8-simplify>=0.19.3
+          - flake8-type-checking>=2.3.0
+          - flake8-typing-imports>=1.14.0
+          - flake8-use-pathlib>=0.3.0
+          - mccabe>=0.7.0
+          - pep8-naming>=0.13.2
+          - pep8>=1.7.1
+          - pycodestyle>=2.10.0
+          - pydocstyle>=6.1.1
+          - radon>=5.1.0
+          - tryceratops>=1.1.0
+
+  # - repo: https://github.com/asottile/dead
+  #   rev: v1.5.0
+  #   hooks:
+  #     - id: dead
+  #       alias: check-dead-code
+  #       name: "[check]: dead code [dead]"
+  #       args:
+  #         # regex to mark files as tests, default '(^|/)(tests?|testing)/'
+  #         - '--tests=(tests/|test_utils\.py)'
+  #       stages: [manual]
+
+  # - repo: https://github.com/pycqa/flake8
+  #   rev: 4.0.1
+  #   hooks:
+  #     - id: flake8
+  #       alias: check-flake8
+  #       name: "[check]: PEP 8 (Python) [flake8]"
+  #       additional_dependencies: *flake8_deps
+
+  # NOTE: Probably pair with https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.28.0
+    hooks:
+      - id: yamllint
+        alias: check-yaml-style
+        name: "[check]: check yaml style issues [yamllint]"
+        args:
+          - --strict
+          - --format=parsable
+          - -c=yamllint.yml
+
+  # # NOTE: yamlfmt is not properly configured yet
+  # - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+  #   rev: 0.1.0
+  #   hooks:
+  #     - id: yamlfmt
+  #       name: "[fix]: format yaml files [yamlfmt]"
+  #       args:
+  #         - --colons
+  #         - --mapping=6
+  #         - --sequence=4
+  #         - --offset=2
+  #         - --width=119
+  #       stages: [manual]
+
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.6.0
+    hooks:
+      - id: nbqa-check-ast
+        name: "[check]: cells parse as valid python (Notebooks) [nbqa-check-ast]"
+
+      - id: nbqa-isort
+        name: "  [fix]: sort imports (Notebooks) [nbqa-isort]"
+        args:
+          - --jobs=8
+          - --settings-path=.isort.cfg
+          - --filter-files
+
+      - id: nbqa-pyupgrade
+        name: "  [fix]: upgrade syntax (Notebooks) [nbqa-pyupgrade]"
+        args:
+          - --py36-plus
+          - --py37-plus
+          - --py38-plus
+          - --keep-runtime-typing
+
+      # - id: nbqa-autopep8
+      #   name: "  [fix]: PEP 8 (Notebooks) [nbqa-autopep8]"
+      #   args:
+      #     # - --select=E26,E265,E266,E731
+      #     # - --jobs=0
+      #     - --jobs=8
+      #     - --aggressive
+      #     - --aggressive
+      #     - --aggressive
+      #     - --experimental
+      #     - --max-line-length=119
+      #     - --in-place
+
+      # - id: nbqa-flake8
+      #   alias: nbqa-flake8-strict
+      #   name: "[check]: check code style issues (Notebooks) [nbqa-flake8]"
+      #   additional_dependencies: *flake8_deps
+      #   stages: [manual]
+
+      - id: nbqa-yapf
+        name: "  [fix]: format code (Notebooks) [nbqa-yapf]"
+        additional_dependencies:
+          - toml>=0.10.2
+          - yapf>=0.32.0
+
+      # - id: nbqa-pylint
+      #   name: "[check]: Run pylint on a Jupyter Notebook"
+
+      # # TODO(diegovalenzuelaiturra): Check if nbqa-mypy is working properly
+      # - id: nbqa-mypy
+      #   name: "[check]: type check (Notebooks) [nbqa-mypy]"
+      #   # args:
+      #   #   - --pretty
+      #   #   - --show-absolute-path
+      #   #   - --color-output
+      #   #   # - --config-file=mypy.ini
+      # #  additional_dependencies:
+      # #    - types-all>="1.0.0"
+      #   # stages: [manual]
+
+  # # NOTE: It may be convenient to define it as local pre-commit hook
+  # - repo: https://github.com/pre-commit/mirrors-mypy
+  #   rev: v0.910-1
+  #   hooks:
+  #     - id: mypy
+  #       name: "[check]: type check (Python) [mypy]"
+  #       # pass_filenames: false
+  #       args:
+  #         - --pretty
+  #         - --show-absolute-path
+  #         - --color-output
+  #         # - --config-file=mypy.ini
+  #       additional_dependencies:
+  #         - types-all>="1.0.0"
+  #       types: [python]
+  #       stages: [manual]
+
+  #   # NOTE: It may be convenient to define it as local pre-commit hook
+  # - repo: https://github.com/PyCQA/pylint
+  #   rev: v2.12.1
+  #   hooks:
+  #     - id: pylint
+  #       name: "[check]: static code analysis (Python) [pylint]"
+  #       args:
+  #         - --output-format=colorized
+  #       additional_dependencies:
+  #         - ipython>=8.6.0
+  #         - matplotlib>=3.6.2
+  #         - numpy>="1.23.4"
+  #         - pandas>="1.5.2"
+  #         - pytest>="7.2.0"
+  #         - requests_mock>="1.10.0"
+  #         - requests>="2.28.1"
+  #       stages: [manual]
+
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.5.0
+    hooks:
+      - id: interrogate
+        alias: check-code-docstrings-coverage
+        name: "[check]: (code) docstring coverage (Python) [interrogate]"
+        args:
+          # Do not print output
+          # - --quiet
+          # Toggle color output on/off when printing to stdout.
+          - --color
+          # Omit reporting files that have 100% documentation coverage.
+          - --omit-covered-files
+          # Ignore `__init__.py` modules.
+          - --ignore-init-module
+          # Fail when coverage % is less than a given amount.
+          - --fail-under=100
+          # - --fail-under=95
+          # - --fail-under=50
+          - -vv
+        # files: ^teselagen/
+        # excluding files also exclude them from the docstring coverage calculation
+        #   NOTE: mark regex as verbose ( https://github.com/psf/black/issues/395#issuecomment-499630129 )
+        exclude: |
+          (?x)(
+              tests/|
+              setup\.py|
+              __init__\.py
+          )
+        stages: [manual]
+
+      - id: interrogate
+        alias: check-tests-docstrings-coverage
+        name: "[check]: (tests) docstring coverage (Python) [interrogate]"
+        args:
+          # Do not print output
+          # - --quiet
+          # Toggle color output on/off when printing to stdout.
+          - --color
+          # Omit reporting files that have 100% documentation coverage.
+          - --omit-covered-files
+          # Ignore `__init__.py` modules.
+          - --ignore-init-module
+          # Fail when coverage % is less than a given amount.
+          - --fail-under=100
+          # - --fail-under=95
+          # - --fail-under=50
+          - -vv
+        files: .*/tests/
+        # excluding files also exclude them from the docstring coverage calculation
+        #   NOTE: mark regex as verbose ( https://github.com/psf/black/issues/395#issuecomment-499630129 )
+        exclude: |
+          (?x)(
+              __init__\.py
+          )
+        stages: [manual]
+
+      - id: interrogate
+        alias: check-docstrings-coverage
+        name: "[check]: docstring coverage (Python) [interrogate]"
+        args:
+          # Do not print output
+          # - --quiet
+          # Toggle color output on/off when printing to stdout.
+          - --color
+          # Omit reporting files that have 100% documentation coverage.
+          - --omit-covered-files
+          # Ignore `__init__.py` modules.
+          - --ignore-init-module
+          # Fail when coverage % is less than a given amount.
+          - --fail-under=100
+          # - --fail-under=95
+          # - --fail-under=50
+          - -vv
+        files: .*
+        # excluding files also exclude them from the docstring coverage calculation
+        #   NOTE: mark regex as verbose ( https://github.com/psf/black/issues/395#issuecomment-499630129 )
+        exclude: |
+          (?x)(
+              __init__\.py
+          )
+        stages: [manual]
+
+  # - repo: meta
+  #   hooks:
+  #     - id: check-hooks-apply
+  #       name: "[check]: check that all hooks are applied [check-hooks-apply]"
+  #     - id: check-useless-excludes
+  #       name: "[check]: check that no useless excludes are used [check-useless-excludes]"

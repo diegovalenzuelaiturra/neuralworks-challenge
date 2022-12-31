@@ -1,0 +1,19 @@
+[style]
+# pip install --no-cache-dir --upgrade yapf
+
+# The based_on_style setting determines which of the predefined styles
+# this custom style is based on (think of it like subclassing).
+# Four styles are predefined:
+#   * pep8 (default)
+#   * google (based off of the Google Python Style Guide)
+#   * yapf (for use with Google open source projects)
+#   * facebook
+
+based_on_style=google
+
+# The column limit.
+# (default value is probably 80)
+
+column_limit=119
+
+BLANK_LINES_BETWEEN_TOP_LEVEL_IMPORTS_AND_VARIABLES=1

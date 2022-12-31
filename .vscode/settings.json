@@ -1,0 +1,260 @@
+{
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.guessTypes": true,
+    "autoDocstring.includeName": false,
+    "autoDocstring.startOnNewLine": false,
+    "explorer.sortOrder": "type",
+    "explorer.compactFolders": false,
+    "files.associations": {
+        ".bandit": "ini",
+        ".codespellignore": "plaintext",
+        ".codespellrc": "properties",
+        ".coveragerc": "properties",
+        ".editorconfig": "ini",
+        ".flake8": "ini",
+        ".isort.cfg": "properties",
+        ".pydocstyle": "properties",
+        ".style.yapf": "properties",
+        "mypy.ini": "ini",
+        "poetry.lock": "properties",
+        ".pylintrc": "properties",
+        "pyproject.toml": "properties",
+        "pytest.ini": "ini",
+        "radon.cfg": "properties",
+        "setup.cfg": "properties",
+        // custom file types
+        ".credentials": "json",
+        // generic file types
+        // "*.ini": "ini",
+        // "*.cfg": "properties",
+        // "*.toml": "properties",
+    },
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        //
+        // CUSTOM
+        //
+        ".vscode": false,
+        "**/__pycache__": true,
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true,
+        "**/*.egg-info": true,
+        "**/*.eggs": true,
+        "**/*.pyc": true,
+        "**/stubs": true,
+        "**/typesheds": true,
+        "**/typestubs": true,
+        "**/typings": true,
+        "**/.coverage": true,
+        //
+        // CONFIG FILES
+        //
+        "**/.bandit": true,
+        "**/.codespellignore": true,
+        "**/.codespellrc": true,
+        "**/.coveragerc": true,
+        "**/.flake8": true,
+        "**/.isort.cfg": true,
+        "**/.pydocstyle": true,
+        "**/.pylintrc": true,
+        "**/.style.yapf": true,
+        "**/.yamllint.yml": true,
+        "**/bandit.yml": true,
+        "**/cSpell.json": true,
+        "**/mypy.ini": true,
+        "**/pyrightconfig.json": true,
+        "**/radon.cfg": true,
+        //
+        "**/.sourcery.yaml": true,
+        "**/yamllint.yml": true,
+        //
+        "**/.markdownlint.json": true,
+        "**/.mdl_style.rb": true,
+        "**/.mdlrc": true,
+        //
+        "**/.editorconfig": true,
+        "**/.gitattributes": true,
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "git.ignoreLimitWarning": true,
+    "notebook.lineNumbers": "on",
+    "notebook.output.textLineLimit": 10000, // default: 30
+    //
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [
+        119
+    ],
+    //
+    // Use "SHIFT + Option + F" to format document
+    // Use "CMD + K + CMD + F" to format selection
+    // Then "CMD + S" to and save it
+    //
+    // "editor.formatOnPaste": false,
+    // "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": false,
+    //
+    // default is "off",  choices are "off", "basic", "strict"
+    "python.analysis.typeCheckingMode": "basic",
+    "python.languageServer": "Pylance",
+    "python.formatting.provider": "yapf",
+    "python.linting.ignorePatterns": [
+        "**/site-packages/**/*.py",
+        ".vscode/*.py",
+        // customs
+        "**/stubs/**/*.pyi",
+        "**/typings/**/*.pyi",
+        // ignore all csv files
+        "**/*.csv",
+        // ignore all tsv files
+        "**/*.tsv",
+        // ignore all txt files
+        "**/*.txt",
+        //
+        "**/*.log",
+        "**/*.tfevents",
+        "**/catboost-info",
+        "**/.ipynb_checkpoints",
+        "**/.pytest_cache",
+        "**/.mypy_cache",
+        "**/.coverage",
+        "**/.coverage.*",
+    ],
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    //
+    "python.linting.banditArgs": [
+        "-ll",
+        // "-ii",
+        "--configfile=${workspaceFolder}/bandit.yml",
+        "--ini=${workspaceFolder}/.bandit",
+    ],
+    // flake8 runs bandit since we are using the flake8-bandit plugin
+    "python.linting.banditEnabled": false,
+    "python.linting.flake8Args": [
+        "--config=${workspaceFolder}/.flake8"
+    ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyArgs": [
+        //
+        "--config-file=${workspaceFolder}/mypy.ini",
+        //
+        // "--follow-imports=silent",
+        // "--ignore-missing-imports",
+        "--show-column-numbers",
+        "--no-pretty",
+    ],
+    "python.linting.mypyEnabled": true,
+    "python.linting.prospectorEnabled": false,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.pydocstyleEnabled": false,
+    "python.linting.pylamaEnabled": false,
+    "python.linting.pylintArgs": [
+        "--rcfile=${workspaceFolder}/.pylintrc",
+    ],
+    "python.linting.pylintEnabled": true,
+    //
+    // "python.sortImports.args": [],
+    "isort.args": [
+        "--jobs=8",
+        "--settings-path=${workspaceFolder}/.isort.cfg",
+    ],
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        // custom
+        // "coverage": true,
+    },
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.wrapTabs": true,
+    "workbench.fontAliasing": "auto",
+    "workbench.list.smoothScrolling": true,
+    //
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+    },
+    //
+    "[plaintext]": {
+        "files.insertFinalNewline": false
+    },
+    //
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        // https://github.com/microsoft/vscode/issues/1679
+        "files.trimTrailingWhitespace": false,
+        // "editor.rulers": [
+        //     80
+        // ],
+    },
+    //
+    "resmon.show.disk": false,
+    "resmon.show.cputemp": false,
+    "resmon.show.mem": true,
+    "resmon.show.battery": false,
+    "resmon.show.cpufreq": true,
+    "resmon.show.cpuusage": true,
+    //
+    "git.enableCommitSigning": false,
+    // testing
+    "python.testing.pytestArgs": [
+        "."
+        // "neuralworks"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
+    ],
+    //
+    // /opt/homebrew/bin/python3 -m isort --version
+    // /usr/bin/python3 -m isort --version
+    // "isort.interpreter": [
+    //     "/opt/homebrew/bin/python3",
+    //     "python3",
+    //     "python",
+    // ],
+    // "isort.importStrategy": "fromEnvironment",
+    // "isort.importStrategy": "useBundled",
+    //
+    // "editor.codeActionsOnSave": {
+    //     // official extension "Python" uses "source.organizeImports"
+    //     "source.organizeImports": true,
+    //     // "source.sortImports": true,
+    //     // "source.fixAll" removes unused imports automatically inmediatlly on save,
+    //     //                 which can be annoying
+    //     // "source.fixAll": true,
+    // },
+    "terminal.integrated.scrollback": 100000, // default is 1000
+    //
+    // "explorer.autoRevealExclude": {
+    //     "**/node_modules": true,
+    //     "**/bower_components": true
+    // },
+    //
+    // "git.branchRandomName.enabled": true,
+    // "git.branchRandomName.dictionary": [
+    //     "adjectives",
+    //     "animals",
+    // ],
+    // "git.closeDiffOnOperation": false,
+    //
+}

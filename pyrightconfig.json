@@ -1,0 +1,27 @@
+{
+    "include": [
+        "./neuralworks/",
+        "./setup.py",
+        "./conftest.py"
+    ],
+    "exclude": [
+        "**/node_modules",
+        "**/__pycache__",
+        "typestubs",
+        "typings",
+        "*/.eggs/*",
+        "*/.ipynb_checkpoints/*",
+        "*/.mypy_cache/*",
+        "*/.pytest_cache/*",
+        "*/*.egg-info/*",
+        "*/*.egg",
+        "*/data/*",
+        "*/dist-packages/*"
+    ],
+    "stubPath": "typings",
+    "typeCheckingMode": "basic",
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": "warning",
+    "pythonVersion": "3.8",
+    "pythonPlatform": "Linux"
+}
