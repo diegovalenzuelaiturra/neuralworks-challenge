@@ -80,13 +80,13 @@ repos:
       - id: check-docstring-first
         name: "[check]: docstring must be first in a module (Python)"
 
-      - id: check-added-large-files
-        name: "[check]: added large files"
-        args:
-          # default: 500
-          - --maxkb=2000
-          # - --enforce-all
-        exclude: '.*\.(csv|txt)'
+      # - id: check-added-large-files
+      #   name: "[check]: added large files"
+      #   args:
+      #     # default: 500
+      #     - --maxkb=2000
+      #     # - --enforce-all
+      #   exclude: '.*\.(csv|txt)'
 
       - id: check-json
         # does not support comments (JSONC)
